@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediAgent | Autonomous Emergency & Clinical Triage Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <div>
+          <div class="brand-title">MediAgent <span class="badge">Autonomous</span></div>
+          <div class="brand-subtitle">Gemini 1.5 Function Calling • Zod Safety Guard • Clinical Dispatch</div>
+        </div>
+      </div>
+      <div class="header-status">
+        <span class="status-indicator"></span>
+        <span id="engine-status">Engine Active</span>
+        <span class="pill" id="latency-pill">Latency: -- ms</span>
+      </div>
+    </header>
+
+    <!-- Main Chat Workspace -->
+    <main class="chat-workspace">
+      <!-- Quick Prompts / Capabilities Banner -->
+      <div class="prompt-bar">
+        <span class="prompt-bar-label">Try quick agent queries:</span>
+        <div class="prompt-chips">
+          <button class="chip" onclick="sendQuickPrompt('Severe thermal burn on right arm, immediate first aid steps?')">🔥 Severe Burn Protocol</button>
+          <button class="chip" onclick="sendQuickPrompt('Check live emergency and trauma bed availability in New Delhi')">🏥 Bed Capacity (Delhi)</button>
+          <button class="chip" onclick="sendQuickPrompt('Patient has acute chest pain, SpO2 89%, heart rate 130 BPM. Triage?')">🚨 Acute Triage Assessment</button>
+          <button class="chip" onclick="sendQuickPrompt('First aid protocol for heatstroke in elderly adult')">☀️ Heatstroke Dispatch</button>
+        </div>
+      </div>
+
+      <!-- Messages Stream -->
+      <div class="messages-container" id="messages-container">
+        <div class="message assistant-message welcome-message">
+          <div class="avatar">🤖</div>
+          <div class="message-body">
+            <div class="message-text">
+              <h3>Welcome to MediAgent</h3>
+              <p>I am an <strong>Autonomous Clinical & Dispatch Web Agent</strong>. Unlike static chatbots, I actively execute external programmatic tools through structured schema validation:</p>
+              <ul>
+                <li><code>fetchFirstAidProtocol</code> — Dispatches step-by-step life safety instructions.</li>
+                <li><code>checkHospitalResourceCapacity</code> — Real-time emergency department bed tracking.</li>
+                <li><code>calculateTriageScore</code> — Clinical acuity classification with circuit-breaker protection.</li>
+              </ul>
+              <p>Type a symptom, emergency situation, or hospital query below to inspect real-time tool execution traces!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="input-container">
+        <form id="chat-form" onsubmit="handleChatSubmit(event)">
+          <div class="input-wrapper">
+            <input 
+              type="text" 
+              id="user-input" 
+              placeholder="Report emergency, symptoms, or hospital inquiry (e.g. 'Trauma bed in Gurgaon' or 'CPR steps')..."
+              autocomplete="off"
+            />
+            <button type="submit" id="send-btn" class="send-btn">
+              <span>Send</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+        </form>
+        <div class="input-footnote">
+          Defensive Architecture: Enforces <code>MAX_AGENT_STEPS = 4</code> circuit-breaker guard to prevent tool-calling recursion loops.
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
