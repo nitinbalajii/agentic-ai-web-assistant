@@ -144,7 +144,7 @@ Dispatches a user query to the agent loop.
 ## 👤 Author
 - **Nitin Balajee**
 - GitHub: [@nitinbalajii](https://github.com/nitinbalajii)
-- Portfolio: [nitinbalajee.vercel.app](https://nitinbalajee.vercel.app)
+- Portfolio: [nitinbalajee.vercel.app](https://nitin-balajee-portfolio.vercel.app/)
 - LinkedIn: [Nitin Balajee](https://www.linkedin.com/in/nitin-balajee-b283a3312/)
 
 ---
